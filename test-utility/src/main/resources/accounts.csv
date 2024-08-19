@@ -1,0 +1,6 @@
+AccountID,AccountHolderName,AccountType,Balance,Currency
+1001,John Doe,Savings,10000,USD
+1002,Jane Smith,Checking,5250.5,USD
+1003,Alice Johnson,Savings,7800,USD
+1004,Bob Brown,Checking,3950.75,USD
+1005,Charlie Davis,Savings,15600,USD

@@ -12,5 +12,6 @@
         <module>connection-utility</module>
         <module>test-utility</module>
     </modules>
+
 </project>
 
