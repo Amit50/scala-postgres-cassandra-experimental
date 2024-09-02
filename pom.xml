@@ -10,7 +10,6 @@
 
     <modules>
         <module>connection-utility</module>
-        <module>postgres-utility</module>
         <module>test-utility</module>
     </modules>
 

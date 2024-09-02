@@ -4,14 +4,17 @@ This Repo help to get better understanding of Scala Integration of Postgres and 
 
 1. Postgres Util Module will help to get better at Postgres daily life operations
 
-Prerequisites
+## Prerequisites
 
-Docker is used to launch to required databases
-<b>Postgres</b>
+Docker is used to launch required databases
 
-docker run -e POSTGRES_PASSWORD=postgres --name pg postgres
-docker start pg
-docker exec -it pg psql -U postgres
+## Postgres
+ - docker run -e POSTGRES_PASSWORD=postgres --name pg postgres
+ - docker start pg
+ - docker exec -it pg psql -U postgres
 
+## Cassandra
+ - docker network create cassandra_network
+ - 
 
 

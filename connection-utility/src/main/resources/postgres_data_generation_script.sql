@@ -33,3 +33,15 @@ CREATE TABLE sample_dataset_range_46_60 PARTITION OF sample_dataset_range
 FOR VALUES FROM (46) TO (61);
 CREATE TABLE sample_dataset_range_above_61 PARTITION OF sample_dataset_range
 FOR VALUES FROM (61) TO (MAXVALUE);
+
+drop table public.sample_dataset_range_v2;
+CREATE TABLE public.sample_dataset_range_v2 (
+	id int8 NOT null,
+	"name" text NULL,
+	age int4 NULL,
+	salary int4 NULL,
+	updated_at timestamp NOT NULL,
+	created_at timestamp NOT NULL,
+	salary_date date null,
+	CONSTRAINT sample_dataset_range_v2_pkey PRIMARY KEY (id)
+);
