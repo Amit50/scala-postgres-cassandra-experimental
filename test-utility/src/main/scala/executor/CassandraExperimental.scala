@@ -28,7 +28,7 @@ object CassandraExperimental {
       .config("spark.cassandra.connection.host", "127.0.0.1")
       .getOrCreate()
 
-    val sampleDF = getSampleEmployeeData(100000).filter(col("id")=== 900).drop("salary")
+    val sampleDF = getSampleEmployeeData(100000).filter(col("id")=== 82694).drop("salary","created_at","updated_at")
     sampleDF.show(10,false);
 //    writeSampleToCassandra(sampleDF, "sample_test_data_v1", "ab_test_keyspace")
     writeSampleToCassandra(sampleDF, "sample_test_data_v2", "ab_test_keyspace")

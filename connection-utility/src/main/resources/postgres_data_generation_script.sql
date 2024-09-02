@@ -5,8 +5,6 @@ SELECT *
 FROM pg_indexes
 WHERE schemaname = 'public';
 
-
-
 vacuum (analyze, verbose, full);
 VACUUM FULL sample_dataset_range;
 

@@ -41,23 +41,23 @@ object PostgresExperimental {
     sparkPgOperation.getTableData("public.employees").show(10, false)
 
 
-    val sampleDF = getSampleEmployeeData(100000).repartition(4)
-//    writeDataToPgTable("public.sample_dataset_range_v2", sampleDF, sparkPgOperation,mode="append")
+    val sampleDF = getSampleEmployeeData(10000000).repartition(4)
+//    writeDataToPgTable("public.sample_dataset_range_v3", sampleDF, sparkPgOperation,mode="append")
     sampleDF.printSchema()
     println("write complete")
 
-    updateRecordToPg(sampleDF.limit(2), pgDBOps)
-    updateBatchRecordToPg(sampleDF, pgDBOps)
-
-
-    pgDBOps.updatePostgresTable(tableName = "public.sample_dataset_range_v2",name="Robert",age=22,salary = 41000)
-
-    pgDBOps.createIndex(
-          tableName = "public.sample_dataset_range_v2",
-          indexName = "ind_sample_dataset_2",
-          indexColumns = Seq("age"),
-          additionalIncludeColumns = Seq("salary", "name"),
-        )
+//    updateRecordToPg(sampleDF.limit(2), pgDBOps,"public.sample_dataset_range_v3")
+    updateBatchRecordToPg(sampleDF, pgDBOps,"public.sample_dataset_range_v3")
+//
+//
+//    pgDBOps.updatePostgresTable(tableName = "public.sample_dataset_range_v2",name="Robert",age=22,salary = 41000)
+//
+//    pgDBOps.createIndex(
+//          tableName = "public.sample_dataset_range_v2",
+//          indexName = "ind_sample_dataset_2",
+//          indexColumns = Seq("age"),
+//          additionalIncludeColumns = Seq("salary", "name"),
+//        )
 //    pgDBOps.dropIndex(indexName = "ind_sample_dataset_2")
 
 
