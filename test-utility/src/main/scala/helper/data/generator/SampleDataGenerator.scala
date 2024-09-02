@@ -115,7 +115,8 @@ object SampleDataGenerator {
     val nameMap: Broadcast[Map[Int, String]] = spark.sparkContext.broadcast(getNameMap())
 
     // Generate a DataFrame with columns id, name, age, salary
-    val df: DataFrame = spark.range(1, numRows + 1).toDF("id")
+    val df: DataFrame =
+      spark.range(1, numRows + 1).toDF("id")
       .withColumn("name_index",(rand() * 100).cast("int"))
       .withColumn("name", getNameUDF(col("name_index")))
       .withColumn("age", (rand() * 80 + 1).cast("int")) // Random age between 1 and 81
