@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    hostname: cassandra
+    networks:
+      - cassandra-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=SingleNodeCluster
+      - CASSANDRA_SEEDS=cassandra
+      - CASSANDRA_BROADCAST_ADDRESS=cassandra
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    ports:
+      - "9042:9042" # CQL
+    command: >
+      cassandra -f -Dcassandra.jmx.local.port=7199 -Dcassandra.metricsReporter.enable=false
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 512M # Limit the memory usage to 512MB
+#        reservations:
+#          memory: 256M # Reserve 256MB of memory
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+      - cassandra-config:/etc/cassandra
+
+networks:
+  cassandra-network:
+    driver: bridge
+
+volumes:
+  cassandra-data:
+    driver: local
+  cassandra-config:
+    driver: local

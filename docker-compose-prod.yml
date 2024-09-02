@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  cassandra-1:
+    image: cassandra:latest
+    container_name: cassandra-1
+    hostname: cassandra-1
+    networks:
+      - cassandra-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TestCluster
+      - CASSANDRA_SEEDS=cassandra-1
+      - CASSANDRA_BROADCAST_ADDRESS=cassandra-1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    ports:
+      - "9042:9042"
+
+  cassandra-2:
+    image: cassandra:latest
+    container_name: cassandra-2
+    hostname: cassandra-2
+    networks:
+      - cassandra-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TestCluster
+      - CASSANDRA_SEEDS=cassandra-1
+      - CASSANDRA_BROADCAST_ADDRESS=cassandra-2
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+
+  cassandra-3:
+    image: cassandra:latest
+    container_name: cassandra-3
+    hostname: cassandra-3
+    networks:
+      - cassandra-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TestCluster
+      - CASSANDRA_SEEDS=cassandra-1
+      - CASSANDRA_BROADCAST_ADDRESS=cassandra-3
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+
+networks:
+  cassandra-network:
+    driver: bridge

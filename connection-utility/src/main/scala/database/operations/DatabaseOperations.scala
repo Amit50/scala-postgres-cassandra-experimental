@@ -1,5 +1,5 @@
 package database.operations
 
-trait DatabaseOperations {
+trait DatabaseOperations extends Serializable {
 
 }
